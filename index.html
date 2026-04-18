@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ציטוט יומי</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f0f0f;
+      font-family: 'Segoe UI', sans-serif;
+      color: #f0f0f0;
+    }
+
+    .card {
+      max-width: 600px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+    }
+
+    .quote {
+      font-size: 1.6rem;
+      line-height: 1.7;
+      font-style: italic;
+      color: #e8e8e8;
+      margin-bottom: 1.5rem;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .author {
+      font-size: 1rem;
+      color: #888;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    button {
+      background: none;
+      border: 1px solid #444;
+      color: #ccc;
+      padding: 0.7rem 2rem;
+      font-size: 0.95rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    button:hover {
+      border-color: #aaa;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="quote" id="quote"></div>
+    <div class="author" id="author"></div>
+    <button onclick="nextQuote()">ציטוט חדש</button>
+  </div>
+
+  <script>
+    const quotes = [
+      { text: "הדרך הטובה ביותר לחזות את העתיד היא ליצור אותו.", author: "אברהם לינקולן" },
+      { text: "אל תחכה להזדמנות המושלמת. קח הזדמנות והפוך אותה למושלמת.", author: "תאודור רוזוולט" },
+      { text: "ההצלחה היא ללכת מכישלון לכישלון מבלי לאבד את ההתלהבות.", author: "וינסטון צ'רצ'יל" },
+      { text: "חיים שלא נבחנים אינם ראויים לחיות.", author: "סוקרטס" },
+      { text: "המסע של אלף מייל מתחיל בצעד אחד.", author: "לאו טסה" },
+      { text: "היה השינוי שאתה רוצה לראות בעולם.", author: "מהטמה גנדי" },
+      { text: "לא הנפילה קובעת אותנו, אלא איך אנחנו קמים.", author: "넬סון מנדלה" },
+      { text: "עדיף לנסות ולהיכשל מאשר לא לנסות בכלל.", author: "תיאודור רוזוולט" },
+    ];
+
+    let last = -1;
+
+    function nextQuote() {
+      let i;
+      do { i = Math.floor(Math.random() * quotes.length); } while (i === last);
+      last = i;
+      document.getElementById('quote').textContent = `"${quotes[i].text}"`;
+      document.getElementById('author').textContent = `— ${quotes[i].author}`;
+    }
+
+    nextQuote();
+  </script>
+</body>
+</html>
